@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "email": "fahrumfahriansyah@gmail.com",
+        "password": "fahri123"
+    },
+    {
+        "email": "fahriansyah@gmail.com",
+        "password": "fahri1998"
+    },
+    {
+        "email": "fahri@gmail.com",
+        "password": "iyan1998"
+    }
+]

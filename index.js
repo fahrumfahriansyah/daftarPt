@@ -3,7 +3,7 @@
 
 const { urlencoded } = require('express')
 const express = require('express')
-const { masukJSON, masukan, samaData } = require('./olahData/data')
+const { masukJSON, masukan, samaData, samaDataPw } = require('./olahData/data')
 const { check, body, validationResult } = require('express-validator');
 const { render } = require('ejs');
 const app = express()
@@ -32,7 +32,16 @@ app.get('/daftar', (req, res) => {
 }).listen(3000, () => {
     console.log('open in browser');
 })
-app.post('/daftar', [check('email', "email ini salah").isEmail()], (req, res) => {
+app.post('/daftar', [body('email').custom((value) => {
+    const sama = samaData(value)
+    if (sama.length <= 0) {
+        console.log(sama);
+        return true
+    }
+    console.log(sama);
+    throw new Error('nama email sudah dipakai')
+}),
+check('email', "email ini salah").isEmail()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.render("daftar", {
@@ -45,7 +54,38 @@ app.post('/daftar', [check('email', "email ini salah").isEmail()], (req, res) =>
     }
 })
 //!tutup
-//!menanagani bug url
+//! menanagni login
+app.post('/login', [body('email').custom((value) => {
+    const sama = samaData(value)
+    if (sama.length <= 0) {
+        throw new Error('nama email salah')
+    }
+    return true
+
+}), body('password').custom((value) => {
+    const sama1 = samaDataPw(value)
+    if (sama1.length <= 0) {
+        throw new Error('nama password salah')
+    }
+    return true
+
+}), check('email', 'nomor email tidak valid').isEmail()], (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+
+        res.render('login', {
+            judul: 'login',
+            error: errors.array()
+        })
+    } else {
+        res.redirect('/regis')
+    }
+})
+app.get('/regis', (req, res) => {
+    res.render('regis', {
+        judul: 'registrasi',
+    })
+})
 app.use('/', (req, res) => {
     res.status(404)
     res.send('error not page')

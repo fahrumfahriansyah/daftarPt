@@ -1,6 +1,40 @@
 <%- include('../layout/header.ejs') %>
-    <div class="modal-dialog modal-dialog-scrollable">
-        <h1>hello worl</h1>
+    <div class="container mt-5">
+        <h1>logIn</h1>
+        <% if (typeof error !=='undefined' ) { %>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <% error.forEach(error=> { %>
+
+                                <li>
+                                    <%= error.msg %>
+                                </li>
+
+
+                                <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <form method="post" action="/login">
+                            <div class="mb-3 mt-5">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
     </div>
 
     <%- include('../layout/footer.ejs') %>

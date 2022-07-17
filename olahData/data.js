@@ -25,8 +25,13 @@ const masukan = ((data) => {
 
 const samaData = (email) => {
     const dataUser = masukJSON()
-    return dataUser.find((a) => a.email === email)
-
+    const jadi = dataUser.filter((a) => a.email === email)
+    return jadi
+}
+const samaDataPw = (password) => {
+    const dataUser = masukJSON()
+    const jadi = dataUser.filter((a) => a.password === password)
+    return jadi
 }
 
-module.exports = { masukJSON, masukan, samaData }
+module.exports = { masukJSON, masukan, samaData, samaDataPw }
