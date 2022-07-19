@@ -34,4 +34,5 @@ const samaDataPw = (password) => {
     return jadi
 }
 
+
 module.exports = { masukJSON, masukan, samaData, samaDataPw }

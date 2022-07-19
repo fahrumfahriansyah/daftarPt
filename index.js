@@ -10,7 +10,7 @@ const app = express()
 
 
 app.set("view engine", "ejs")
-app.use(urlencoded())
+app.use(urlencoded({ extended: true }))
 app.use(express.static('public'))
 //!membuat halaman utama
 app.get('/', function (req, res) {
@@ -79,12 +79,24 @@ app.post('/login', [body('email').custom((value) => {
             error: errors.array()
         })
     } else {
-        res.redirect('/regis')
+        const data = { email: 'admin@gmail.com', password: 'admin123' }
+        const user = req.body
+        console.log(user.email, data.email);
+        if (user.email === data.email) {
+            res.redirect('/admin')
+        } else {
+            res.redirect('/regis')
+        }
     }
 })
 app.get('/regis', (req, res) => {
     res.render('regis', {
         judul: 'registrasi',
+    })
+})
+app.get('/admin', (req, res) => {
+    res.render('admin', {
+        judul: 'admin',
     })
 })
 app.use('/', (req, res) => {
