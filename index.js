@@ -11,6 +11,7 @@ const app = express()
 
 app.set("view engine", "ejs")
 app.use(urlencoded())
+app.use(express.static('public'))
 //!membuat halaman utama
 app.get('/', function (req, res) {
 

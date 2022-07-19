@@ -1,5 +1,5 @@
 <%- include('../layout/header.ejs') %>
-    <div class="container mt-5">
+    <div class="container mt-5 contentDftr">
         <h1>daftar</h1>
         <% if (typeof error !=='undefined' ) { %>
             <div class="row">
@@ -17,9 +17,9 @@
             </div>
             <% } %>
                 <div class="row">
-                    <div class="col-sm-4">
-                        <form method="post" action="/daftar">
-                            <div class="mb-3 mt-5">
+                    <div class="col-sm-12">
+                        <form method="post" action="/daftar" class="form">
+                            <div class="mb-3 mt-2">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
