@@ -3,7 +3,7 @@
 
 const { urlencoded } = require('express')
 const express = require('express')
-const { masukJSON, masukan, samaData, samaDataPw } = require('./olahData/data')
+const { masukJSON, masukan, samaData, samaDataPw, masukUserJson, samaDataHp } = require('./olahData/data')
 const { check, body, validationResult } = require('express-validator');
 const { render } = require('ejs');
 const app = express()
@@ -89,15 +89,63 @@ app.post('/login', [body('email').custom((value) => {
         }
     }
 })
+//! tutup
+//! registrasi 
 app.get('/regis', (req, res) => {
     res.render('regis', {
         judul: 'registrasi',
     })
 })
+//!
+//! web admin
 app.get('/admin', (req, res) => {
     res.render('admin', {
         judul: 'admin',
     })
+})
+//! tutup
+//! input data
+app.get('/inputData', (req, res) => {
+    res.render('inputData', {
+        judul: 'PT gudang garam',
+    })
+})
+app.post('/inputData', [body('namaDepan').custom((value) => {
+    if (value.length < 3) {
+        throw new Error('nama  depan harus lebih dari tiga huruf')
+    }
+    return true
+}), check('noHP', 'no hp salah').isMobilePhone('id-ID'), body('noHP').custom((value) => {
+    const dataHp = samaDataHp(value)
+    if (dataHp.length <= 0) {
+        return true
+
+    }
+
+    console.log(dataHp);
+    throw new Error('nomor tlp sudah ada')
+}), check('namaDepan', 'nama depan harus huruf besar').isUppercase(), check('namaBelakang', 'nama belakang harus huruf besar').isUppercase()], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+
+        res.render('inputData', {
+            judul: 'PT gudang garam',
+            error: errors.array()
+        })
+    } else {
+
+        masukUserJson(req.body)
+        res.redirect('/hasilData')
+    }
+})
+//! tutup
+//! hasil data
+
+app.get('/hasilData', (req, res) => {
+    res.render('hasilData', {
+        judul: 'data_anda',
+    })
+
 })
 app.use('/', (req, res) => {
     res.status(404)

@@ -1,0 +1,85 @@
+<%- include('../layout/header.ejs') %>
+    <!-- jika di perlukan silahkan isi form tambahan -->
+    <h1 class="mt-5 mb-5 ms-5">Isi data anda</h1>
+    <% if (typeof error !=='undefined' ) { %>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <% error.forEach(error=> { %>
+                            <li>
+                                <%= error.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <div class="container px-4 ">
+                <div class="row gx-5">
+                    <div class="col-sm-6">
+                        <form method="post" action="/inputData" class="form">
+                            <div class="mb-3 mt-2">
+                                <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
+                                <input type="namaDepan" class="form-control" id="namaDepan" name="namaDepan" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Nama Belakang</label>
+                                <input type="namaBelakang" class="form-control" id="namaBelakang" name="namaBelakang"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledSelect" class="form-label">Kota</label>
+                                <select id="disabledSelect" class="form-select " id="asal" name="asal">
+                                    <option>Jakarta</option>
+                                    <option>Bandung</option>
+                                    <option>Jogjakarta</option>
+                                    <option>Aceh</option>
+                                    <option>Surabaya</option>
+                                    <option>Bali</option>
+                                    <option>Semarang</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="jenis" name="pria">
+                                    <label class="form-check-label" for="disabledFieldsetCheck">
+                                        pria
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="wanita" name="wanita">
+                                    <label class="form-check-label" for="disabledFieldsetCheck">
+                                        wanita
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="disabledSelect" class="form-label">Pekerjaan</label>
+                                <select id="disabledSelect" class="form-select " id="Pekerjaan" name="Pekerjaan">
+                                    <option>Direktur</option>
+                                    <option>Manager</option>
+                                    <option>Admintrasi</option>
+                                    <option>Ofice boy</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-3 mt-2">
+                                        <label for="exampleInputEmail1" class="form-label">No HP</label>
+                                        <input type="noHP" class="form-control" id="noHP" name="noHP" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="lineHeigt">.</div>
+            <!-- jika di perlukan silahkan isi form tambahan -->
+
+            <%- include('../layout/footer.ejs') %>

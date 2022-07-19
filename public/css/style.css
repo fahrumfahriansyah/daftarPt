@@ -8,8 +8,17 @@
     box-shadow: 0px 0px 5px black;
 }
 
+.regisBTn {
+    background: whitesmoke;
+    box-shadow: 0px 0px 5px black;
+}
+
 .textShdw {
     text-shadow: 1px 3px 3px rgb(54, 53, 53);
     padding-bottom: 10;
 
+}
+
+.lineHeigt {
+    line-height: 500px;
 }
