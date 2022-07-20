@@ -61,7 +61,12 @@ const samaDataHp = (noHP) => {
     const jadi = databae.filter((a) => a.noHP === noHP)
     return jadi
 }
+const samaDataNama = (namaDepan) => {
+    const databae = dataUser()
+    const jadi = databae.find((a) => a.namaDepan === namaDepan)
+    return jadi
+}
 
 //!tutup
 
-module.exports = { masukJSON, masukan, samaData, samaDataPw, masukUserJson, samaDataHp }
+module.exports = { masukJSON, masukan, samaData, samaDataPw, masukUserJson, samaDataHp, dataUser, samaDataNama }

@@ -1,3 +1,39 @@
 <%- include('../layout/header.ejs') %>
-    <h1>ini adalah web admin</h1>
+    <h1 class="mt-4 ms-3">data user</h1>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">pekerjaan</th>
+                        <th scope="col">detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(a=> { %>
+
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <%= a.namaDepan %>
+                            </td>
+                            <td>
+                                <%= a.Pekerjaan%>
+                            </td>
+                            <td><button type="button" class="btn btn-dark badge rounded-pill text-bg-dark-info"><a
+                                        href="/admin/<%=a.namaDepan%>"><i
+                                            class="bi bi-card-text"></i>detail</a></button>
+                            </td>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
     <%- include('../layout/footer.ejs') %>

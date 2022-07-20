@@ -22,12 +22,13 @@
                         <form method="post" action="/inputData" class="form">
                             <div class="mb-3 mt-2">
                                 <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
-                                <input type="namaDepan" class="form-control" id="namaDepan" name="namaDepan" required>
+                                <input type="text" class="form-control" id="namaDepan" name="namaDepan" required
+                                    placeholder="masukan nama">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Nama Belakang</label>
-                                <input type="namaBelakang" class="form-control" id="namaBelakang" name="namaBelakang"
-                                    required>
+                                <input type="text" class="form-control" id="namaBelakang" name="namaBelakang" required
+                                    placeholder="masukan nama">
                             </div>
                             <div class="mb-3">
                                 <label for="disabledSelect" class="form-label">Kota</label>
@@ -41,16 +42,23 @@
                                     <option>Semarang</option>
                                 </select>
                             </div>
+
+                            <div class="mb-3 mt-2">
+                                <label for="alamat" class="form-label">Alamat</label>
+                                <input type="text" class="form-control" id="alamat" name="alamat" required
+                                    placeholder="masukan alamat">
+                            </div>
+
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="jenis" name="pria">
-                                    <label class="form-check-label" for="disabledFieldsetCheck">
+                                    <label class="form-check-label" for="pria">
                                         pria
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="wanita" name="wanita">
-                                    <label class="form-check-label" for="disabledFieldsetCheck">
+                                    <label class="form-check-label" for="wanita">
                                         wanita
                                     </label>
                                 </div>
@@ -68,10 +76,18 @@
                                 <div class="col-sm-6">
                                     <div class="mb-3 mt-2">
                                         <label for="exampleInputEmail1" class="form-label">No HP</label>
-                                        <input type="noHP" class="form-control" id="noHP" name="noHP" required>
+                                        <input type="number" class="form-control" id="noHP" name="noHP" required
+                                            placeholder="masukan no hp">
                                     </div>
                                 </div>
                             </div>
+                            <div class="mb-3 mt-2">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="Email" name="Email" required
+                                    placeholder="masukan email">
+                            </div>
+                            <label for="myfile" class="form-label">Masukan cv</label>
+                            <input type="file" id="myfile" name="myfile" required>
 
                             <button type="submit" class="btn btn-primary ">Submit</button>
                         </form>

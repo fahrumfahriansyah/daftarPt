@@ -1,0 +1,48 @@
+<%- include('../layout/header.ejs') %>
+    <div class="row">
+        <div class="col-sm-8">
+
+            <ul class="list-group mt-5 ms-5" style="box-shadow: 0px 0px 40px black;">
+                <li class="list-group-item active" aria-current="true">
+                    Nama Lengkap : <%= data.namaDepan %>
+                </li>
+                <li class="list-group-item">
+                    Nama Pangilan : <%= data.namaBelakang %>
+                </li>
+                <li class="list-group-item">
+                    Tingal Di Kota : <%= data.asal %>
+                </li>
+                <li class="list-group-item">
+                    Alamat : <%= data.alamat%>
+                </li>
+
+                <% if (data.pria) { %>
+                    <li class="list-group-item">
+                        Jenis : Pria
+                    </li>
+                    <% } else if(data.wanita){ %>
+                        <li class="list-group-item">
+                            Jenis : wanita
+                        </li>
+                        <% } %>
+                            <li class="list-group-item">
+                                Pekerjaan : <%= data.Pekerjaan %>
+                            </li>
+
+                            <li class="list-group-item">
+                                NO Hp : <%= data.noHP%>
+                            </li>
+                            <li class="list-group-item">
+                                Email : <%= data.Email %>
+                            </li>
+                            <li class="list-group-item">
+                                cv : <%= data.myfile %>
+                            </li>
+
+
+            </ul>
+
+
+        </div>
+    </div>
+    <%- include('../layout/footer.ejs') %>

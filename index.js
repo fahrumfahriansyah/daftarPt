@@ -3,7 +3,7 @@
 
 const { urlencoded } = require('express')
 const express = require('express')
-const { masukJSON, masukan, samaData, samaDataPw, masukUserJson, samaDataHp } = require('./olahData/data')
+const { masukJSON, masukan, samaData, samaDataPw, masukUserJson, samaDataHp, dataUser, samaDataNama } = require('./olahData/data')
 const { check, body, validationResult } = require('express-validator');
 const { render } = require('ejs');
 const app = express()
@@ -20,11 +20,7 @@ app.get('/', function (req, res) {
     })
 })
 //! tutup
-//! membuat login masuk
-app.get('/login', (req, res) => {
-    res.render('login', { judul: 'login' })
-})
-//! tutup
+
 //!membuat daftar masuk
 app.get('/daftar', (req, res) => {
     res.render("daftar", {
@@ -56,6 +52,11 @@ check('email', "email ini salah").isEmail()], (req, res) => {
 })
 //!tutup
 //! menanagni login
+//! membuat login masuk
+app.get('/login', (req, res) => {
+    res.render('login', { judul: 'login' })
+})
+//! tutup
 app.post('/login', [body('email').custom((value) => {
     const sama = samaData(value)
     if (sama.length <= 0) {
@@ -97,13 +98,7 @@ app.get('/regis', (req, res) => {
     })
 })
 //!
-//! web admin
-app.get('/admin', (req, res) => {
-    res.render('admin', {
-        judul: 'admin',
-    })
-})
-//! tutup
+
 //! input data
 app.get('/inputData', (req, res) => {
     res.render('inputData', {
@@ -124,7 +119,7 @@ app.post('/inputData', [body('namaDepan').custom((value) => {
 
     console.log(dataHp);
     throw new Error('nomor tlp sudah ada')
-}), check('namaDepan', 'nama depan harus huruf besar').isUppercase(), check('namaBelakang', 'nama belakang harus huruf besar').isUppercase()], (req, res) => {
+}), check('namaDepan', 'nama depan harus huruf besar').isUppercase(), check('namaBelakang', 'nama belakang harus huruf besar').isUppercase(), check('Email', 'email anda salah').isEmail()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
 
@@ -147,6 +142,27 @@ app.get('/hasilData', (req, res) => {
     })
 
 })
+//! web admin
+app.get('/admin', (req, res) => {
+
+    const data = dataUser()
+    res.render('admin', {
+        judul: 'admin',
+        data
+    })
+})
+//! tutup
+//! web detail
+app.get('/admin/:nama', (req, res) => {
+    const data = samaDataNama(req.params.nama)
+    console.log(data);
+    res.render('detail', {
+        judul: 'detail',
+        data,
+    })
+})
+//!
+
 app.use('/', (req, res) => {
     res.status(404)
     res.send('error not page')
