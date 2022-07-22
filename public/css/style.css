@@ -22,3 +22,9 @@
 .lineHeigt {
     line-height: 500px;
 }
+
+.judul {
+    color: black;
+    text-shadow: 0px 3px 2px whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

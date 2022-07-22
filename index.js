@@ -16,7 +16,7 @@ app.use(express.static('public'))
 app.get('/', function (req, res) {
 
     res.render('index', {
-        judul: 'halaman awal'
+        judul: 'PT.Gudang Garam'
     })
 })
 //! tutup
@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 //!membuat daftar masuk
 app.get('/daftar', (req, res) => {
     res.render("daftar", {
-        judul: 'daftar',
+        judul: 'PT.Gudang Garam',
     })
 }).listen(3000, () => {
     console.log('open in browser');
@@ -42,7 +42,7 @@ check('email', "email ini salah").isEmail()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.render("daftar", {
-            judul: "daftar",
+            judul: "PT.Gudang Garam",
             error: errors.array()
         })
     } else {
